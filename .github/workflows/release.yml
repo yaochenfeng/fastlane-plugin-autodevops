@@ -39,7 +39,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           # Latest ruby version (remove to use .ruby-version).
-          ruby-version: 3.1
+          ruby-version: 3.0
         if: ${{ steps.release.outputs.release_created }}
 
       # Release the gem to https://rubygems.org if a release has been created.
