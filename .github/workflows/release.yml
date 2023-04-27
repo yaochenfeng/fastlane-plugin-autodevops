@@ -16,7 +16,7 @@ jobs:
       GEM_NAME: "fastlane-plugin-autodevops"
       
       # API Key from Rubygems.org
-      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_AUTH_TOKEN }}
     steps:
       # Uses release-please-action    
       - uses: GoogleCloudPlatform/release-please-action@v2
