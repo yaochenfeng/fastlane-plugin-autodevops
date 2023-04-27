@@ -27,7 +27,7 @@ jobs:
           # The name of the gem.
           package-name: ${{ env.GEM_NAME }}
           bump-minor-pre-major: true
-          bump-patch-for-minor-pre-major: ${{ env.PATCH_MINOR }}
+          bump-patch-for-minor-pre-major: ${{ PATCH_MINOR }}
           # Location of the version.rb file to bump for new releases.
           version-file: "lib/fastlane/plugin/autodevops/version.rb"
           
