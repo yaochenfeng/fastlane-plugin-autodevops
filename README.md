@@ -1,6 +1,7 @@
 # autodevops plugin
 
 [![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-autodevops)
+[![Gem](https://img.shields.io/gem/v/fastlane-plugin-autodevops.svg?style=flat)](https://rubygems.org/gems/fastlane-plugin-autodevops)
 
 ## Getting Started
 
