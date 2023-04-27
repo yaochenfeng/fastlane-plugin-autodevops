@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.1](https://www.github.com/yaochenfeng/fastlane-plugin-autodevops/compare/v0.1.0...v0.1.1) (2023-04-27)
+
+
+### Features
+
+* 添加pod二进制化和生成podspec ([84e99a3](https://www.github.com/yaochenfeng/fastlane-plugin-autodevops/commit/84e99a3a356e3ec7a78397539703cb51f2fb5083))
+
 ## 0.1.0 (2023-04-27)
 
 
