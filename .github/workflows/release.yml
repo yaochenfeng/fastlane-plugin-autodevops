@@ -1,43 +1,57 @@
-name: release
+name: release-please
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    env:
+      # Package or Ruby Gem's name.
+      GEM_NAME: "fastlane-plugin-autodevops"
+      
+      # API Key from Rubygems.org
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
     steps:
+      # Uses release-please-action    
       - uses: GoogleCloudPlatform/release-please-action@v2
         id: release
         with:
+          # Use https://github.com/googleapis/release-please/blob/main/src/strategies/ruby.ts Release Type.
           release-type: ruby
-          package-name: fastlane-plugin-autodevops
-          bump-minor-pre-major: true
+          
+          # The name of the gem.
+          package-name: ${{ env.GEM_NAME }}
+          
+          # Location of the version.rb file to bump for new releases.
           version-file: "lib/fastlane/plugin/autodevops/version.rb"
-      # Checkout code if release was created
+          
+      # Checkout the Repository if a release has been created.  
       - uses: actions/checkout@v2
         if: ${{ steps.release.outputs.release_created }}
-      # Setup ruby if a release was created
+      
+      # Set up Ruby if a release can be created.
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.0
+          # Latest ruby version (remove to use .ruby-version).
+          ruby-version: 3.1
         if: ${{ steps.release.outputs.release_created }}
-      # Bundle install
-      - run: bundle install
-        if: ${{ steps.release.outputs.release_created }}
-      # Publish
-      - name: publish gem
+
+      # Release the gem to https://rubygems.org if a release has been created.
+      - name: Release Gem
         run: |
+          gem install bundler
+          bundle config unset deployment
+          bundle install
           mkdir -p $HOME/.gem
           touch $HOME/.gem/credentials
           chmod 0600 $HOME/.gem/credentials
-          printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
+          printf -- "---\n:rubygems_api_key: ${RUBYGEMS_API_KEY}\n" > $HOME/.gem/credentials
           gem build *.gemspec
           gem push *.gem
-        env:
-          # Make sure to update the secret name
-          # if yours isn't named RUBYGEMS_AUTH_TOKEN
-          GEM_HOST_API_KEY: "${{secrets.RUBYGEMS_AUTH_TOKEN}}"
         if: ${{ steps.release.outputs.release_created }}
