@@ -12,7 +12,7 @@ module Fastlane
         UI.message "pod name: #{params[:pod_name]} #{user_name}"
         genPodspec(params)
         genSource(params)
-        Actions.sh('bundle exec pod install')
+        Actions.sh('bundle exec pod install') if File.exists?("Podfile")
         UI.success("Successfully new pod ⬆️ ")
       end
       def self.genSource(params)

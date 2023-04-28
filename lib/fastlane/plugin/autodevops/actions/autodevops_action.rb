@@ -27,11 +27,11 @@ module Fastlane
 
       def self.available_options
         [
-          # FastlaneCore::ConfigItem.new(key: :your_option,
-          #                         env_name: "AUTODEVOPS_YOUR_OPTION",
-          #                      description: "A description of your option",
-          #                         optional: false,
-          #                             type: String)
+          FastlaneCore::ConfigItem.new(key: :pod_name,
+                                  env_name: "AUTODEVOPS_POD_NAME",
+                               description: "自动化pod名称",
+                                  optional: true,
+                                      type: String)
         ]
       end
 
