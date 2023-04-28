@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.2](https://www.github.com/yaochenfeng/fastlane-plugin-autodevops/compare/v0.1.1...v0.1.2) (2023-04-28)
+
+
+### Bug Fixes
+
+* auto_pod_new ([7bac7a9](https://www.github.com/yaochenfeng/fastlane-plugin-autodevops/commit/7bac7a9ff5a450be20e30eaf80663930826a42de))
+
 ### [0.1.1](https://www.github.com/yaochenfeng/fastlane-plugin-autodevops/compare/v0.1.0...v0.1.1) (2023-04-27)
 
 
