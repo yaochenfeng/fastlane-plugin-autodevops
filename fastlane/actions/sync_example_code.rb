@@ -12,10 +12,14 @@ module Fastlane
         sh "rm -Rf build/Example"
         sh "git clone https://github.com/yaochenfeng/Example build/Example"
         sh "rsync -av --exclude=Business  build/Example/Example  ./"
-     
+        if other_action.prompt(text: "项目生成文件同步: ", boolean: true, ci_input: "n")
+          sh "rsync -av build/Example/project.yml  ./"
+        end
+        if other_action.prompt(text: "项目lint文件同步: ", boolean: true, ci_input: "n")
+          sh "rsync -av build/Example/.swiftlint.yml  ./"
+        end
         UI.message "清理临时文件"
         sh "rm -Rf build/Example"
-        # Actions.lane_context[SharedValues::SYNC_EXAMPLE_CODE_CUSTOM_VALUE] = "my_val"
       end
 
       #####################################################
@@ -23,7 +27,7 @@ module Fastlane
       #####################################################
 
       def self.description
-        "同步 https://github.com/yaochenfeng/Example"
+        "sync_example_code"
       end
 
       def self.details
