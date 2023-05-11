@@ -1,3 +1,8 @@
 lane :test do
   autodevops
 end
+
+desc "同步Example壳工程"
+lane :sync_example do
+    sync_example_code
+end
