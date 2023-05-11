@@ -7,10 +7,10 @@ module Fastlane
     class SyncExampleCodeAction < Action
       def self.run(params)
         # fastlane will take care of reading in the parameter and fetching the environment variable:
-        UI.message "开始同步https://github.com/yaochenfeng/Example"
+        UI.message "开始同步#{params[:git_url]}"
 
         sh "rm -Rf build/Example"
-        sh "git clone https://github.com/yaochenfeng/Example build/Example"
+        sh "git clone #{params[:git_url]} build/Example"
         sh "rsync -av --exclude=Business  build/Example/Example  ./"
         if other_action.prompt(text: "项目生成文件同步: ", boolean: true, ci_input: "n")
           sh "rsync -av build/Example/project.yml  ./"
@@ -33,11 +33,16 @@ module Fastlane
       def self.details
         # Optional:
         # this is your chance to provide a more detailed description of this action
-        "同步 https://github.com/yaochenfeng/Example"
+        "同步 Example 工程"
       end
 
       def self.available_options
-        []
+        [
+          FastlaneCore::ConfigItem.new(key: :git_url,
+            env_name: "AUTO_EAMPLE_GIT",
+            description: "Example项目地址", # a short description of this parameter
+            default_value: "https://github.com/yaochenfeng/Example")
+        ]
       end
 
       def self.output
