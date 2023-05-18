@@ -6,3 +6,8 @@ desc "同步Example壳工程"
 lane :sync_example do
     sync_example_code
 end
+
+desc "发布"
+lane :deploy do |options|
+
+end
