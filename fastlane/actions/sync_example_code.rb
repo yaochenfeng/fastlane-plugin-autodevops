@@ -8,9 +8,10 @@ module Fastlane
       def self.run(params)
         # fastlane will take care of reading in the parameter and fetching the environment variable:
         UI.message "开始同步#{params[:git_url]}"
-        # other_action.ensure_git_status_clean
+        other_action.ensure_git_status_clean
         sh "rm -Rf fastlane/Example"
         sh "git clone #{params[:git_url]} fastlane/Example"
+        sh "mkdir -p Sources/Example"
         sh "rsync -av --exclude=Business  fastlane/Example/Sources/Example  Sources/Example"
         if other_action.prompt(text: "项目生成文件同步: ", boolean: true, ci_input: "n")
           sh "rsync -av fastlane/Example/project.yml  ./"
@@ -19,9 +20,7 @@ module Fastlane
           sh "rsync -av fastlane/Example/.swiftlint.yml  ./"
         end
         UI.message "清理临时文件"
-        sh "rm -Rf build/Example"
-        other_action.git_commit(path: "*", message: "chore: Example sync",allow_nothing_to_commit: true)
-        UI.message "git commit"
+        sh "rm -Rf fastlane/Example"
       end
 
       #####################################################
