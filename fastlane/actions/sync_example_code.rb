@@ -13,6 +13,7 @@ module Fastlane
         sh "git clone #{params[:git_url]} fastlane/Example"
         sh "mkdir -p Sources/Example"
         sh "rsync -av --exclude=Business  fastlane/Example/Sources/Example  Sources/Example"
+        sh "rsync -av fastlane/Example/project-base.yml  ./"
         if other_action.prompt(text: "项目生成文件同步: ", boolean: true, ci_input: "n")
           sh "rsync -av fastlane/Example/project.yml  ./"
         end
