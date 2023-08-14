@@ -1,5 +1,23 @@
 # Changelog
 
+### [0.1.3](https://www.github.com/yaochenfeng/fastlane-plugin-autodevops/compare/v0.1.2...v0.1.3) (2023-08-11)
+
+
+### Features
+
+* 同步iOS Example 工程 ([307cd4d](https://www.github.com/yaochenfeng/fastlane-plugin-autodevops/commit/307cd4dbf3facff56563b51f48f4dad35bf8aeb3))
+
+
+### Bug Fixes
+
+* sync_example_code ([fadaad7](https://www.github.com/yaochenfeng/fastlane-plugin-autodevops/commit/fadaad705b4fdccdb5f39e4a6719f1c4522f0d0c))
+* sync_example_code 文件同步添加选项 ([8ff2b9f](https://www.github.com/yaochenfeng/fastlane-plugin-autodevops/commit/8ff2b9fdc72608cbae6b9abdd8fd0946631ff28f))
+
+
+### Performance Improvements
+
+* 修改同步目录 ([849cd55](https://www.github.com/yaochenfeng/fastlane-plugin-autodevops/commit/849cd55578fc456a00d6630e6f069544a247f8ef))
+
 ### [0.1.2](https://www.github.com/yaochenfeng/fastlane-plugin-autodevops/compare/v0.1.1...v0.1.2) (2023-04-28)
 
 
